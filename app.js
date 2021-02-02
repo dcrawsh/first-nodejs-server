@@ -1,18 +1,14 @@
-const http = require('http');
-
 const express = require('express');
+const app = express();
+const port = 3001;
 
-const app = express() ;
-
-app.use((req,res,next) => {
-    console.log('in the middle');
-    next();
+app.get('/other',(req,res,next) => {
+    console.log('other');
+    res.send('<h1>This is the other</h1>');
 })
-app.use((req,res,next) => {
-    console.log('in a different middle');
-    
+app.get('/',(req,res,next) => {
+    console.log(root);
+    res.send('<h1>This is the root</h1>');
 })
 
-const server = http.createServer(app);
-
-server.listen(3001);
+app.listen(port);
